@@ -331,8 +331,8 @@ defmodule Absinthe.Relay.Connection do
       with {:ok, offset, limit} <- offset_and_limit_for_query(args, opts) do
         records =
           query
-          |> Ecto.Query.limit(limit)
-          |> Ecto.Query.offset(offset)
+          |> Ecto.Query.limit([], ^limit)
+          |> Ecto.Query.offset([], ^offset)
           |> repo_fun.()
 
         opts = [
